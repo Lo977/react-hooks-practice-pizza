@@ -1,7 +1,10 @@
 import React from "react";
 import Pizza from "./Pizza";
 
-function PizzaList() {
+function PizzaList({ pizzas, onSetFormData }) {
+  const displayPizzas = pizzas.map((pizza) => {
+    return <Pizza key={pizza.id} pizza={pizza} onSetFormData={onSetFormData} />;
+  });
   return (
     <table className="table table-striped">
       <thead>
@@ -12,11 +15,7 @@ function PizzaList() {
           <th scope="col">Edit</th>
         </tr>
       </thead>
-      <tbody>
-        {
-          //render Pizza here
-        }
-      </tbody>
+      <tbody>{displayPizzas}</tbody>
     </table>
   );
 }
